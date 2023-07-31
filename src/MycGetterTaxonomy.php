@@ -29,7 +29,7 @@ class MycGetterTaxonomy extends MycGetterBase
             }
 
             $data[$taxonomy] = match ($return) {
-                'all'           => $terms,
+                'all'           => $this->getTermsObject($terms),
                 'name'          => $this->getTermsName($terms),
                 'link'          => $this->getTermsLink($terms),
                 'slug/name'     => $this->getTermsSlugName($terms),
@@ -38,6 +38,11 @@ class MycGetterTaxonomy extends MycGetterBase
         }
 
         return $data;
+    }
+
+    protected function getTermsObject($terms)
+    {
+        return apply_filters('myc_getter_get_terms_object', $terms, $this->postType, $this->postID);
     }
 
     protected function getTermsName($terms)
