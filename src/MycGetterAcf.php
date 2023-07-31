@@ -154,7 +154,7 @@ class MycGetterAcf extends MycGetterBase
 
         $data = esc_attr($value);
 
-        return apply_filters('myc_getter_get_acf_attribute', $data, $this->postType, $this->postID, $fieldSlug);
+        return apply_filters('myc_getter_get_acf_attr', $data, $this->postType, $this->postID, $fieldSlug);
     }
 
     protected function getACFText($fieldSlug)
