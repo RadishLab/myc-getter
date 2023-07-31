@@ -73,8 +73,8 @@ class MycGetterPost extends MycGetterBase
     protected function getPostDate()
     {
         $data = [
-            'date'      => get_the_date('', $this->postID),
-            'global'    => get_post_time('c', true),
+            'date'      => esc_attr(get_the_date('', $this->postID)),
+            'global'    => esc_attr(get_post_time('c', true)),
         ];
 
         return apply_filters('myc_getter_get_date', $data, $this->postType, $this->postID);
