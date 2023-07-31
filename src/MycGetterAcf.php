@@ -56,7 +56,7 @@ class MycGetterAcf extends MycGetterBase
             'link'      => $this->getACFLink($field),
             'image'     => $this->getACFImage($field),
             'image_url' => $this->getACFImage($field, true),
-            'boolean'   => $this->getACFBoolean($field),
+            'int'       => $this->getACFInt($field),
             'string'    => $this->getACFString($field),
             'attr'      => $this->getACFAttribute($field),
             'text'      => $this->getACFText($field),
@@ -187,11 +187,11 @@ class MycGetterAcf extends MycGetterBase
         return apply_filters('myc_getter_get_acf_image', $image, $this->postType, $this->postID, $fieldSlug);
     }
 
-    protected function getACFBoolean($fieldSlug)
+    protected function getACFInt($fieldSlug)
     {
         $value = absint(get_field($fieldSlug, $this->postID));
 
-        return apply_filters('myc_getter_get_acf_boolean', $value, $this->postType, $this->postID, $fieldSlug);
+        return apply_filters('myc_getter_get_acf_int', $value, $this->postType, $this->postID, $fieldSlug);
     }
 
     protected function getACFEmail($fieldSlug)
