@@ -1,9 +1,8 @@
 {
   "name": "radishlab/myc-getter",
-  "description": "A class to get and escape values in WordPress + ACF environments",
-  "type": "package",
-  "version": "1.0.0",
-  "license": "proprietary",
+  "description": "A library to get and escape values in WordPress + ACF environments",
+  "version": "1.0.1",
+  "license": "GPL-2.0-or-later",
   "autoload": {
     "psr-4": {
       "RadishLab\\MycGetter\\": "src/"
@@ -12,7 +11,7 @@
   "authors": [
     {
       "name": "Radish Lab",
-      "email": "hello@radishlab.com"
+      "homepage": "https://radishlab.com/"
     }
   ],
   "require": {
@@ -25,7 +24,5 @@
     "lint": [
       "phpcs --ignore=vendor --extensions=php --standard=PSR12 ."
     ]
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": false
+  }
 }
