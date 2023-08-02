@@ -43,22 +43,9 @@ foreach ($query->posts as $post) {
 - PHP >= 8.0
 
 ## Instalattion
-Add the script to the `composer.json` file inside the theme folder:
-```json
-"repositories": [
-  {
-    "type": "vcs",
-    "url": "git@github.com:RadishLab/myc-getter.git"
-  }
-],
-```
-Run Composer:
 ```bash
-lando composer require RadishLab/myc-getter
+composer require radishlab/myc-getter
 ```
-> [!NOTE]  
-> MYC Getter is added to Mycelium by default.
-
 ## Usage
 ```php
 use RadishLab\MycGetter\MycGetter;
@@ -263,7 +250,7 @@ Each format provides a filter to modify the returned content. The filter has thr
 - Format: array
 - Filter name: `myc_getter_get_terms_slug_name`
 
-### slug/name
+### slug/id
 - Returns escaped content of `term->term_id` and `term->name`
 - Format: array
 - Filter name: `myc_getter_get_terms_id_name`
