@@ -184,7 +184,7 @@ Each field type provides a filter to modify the returned content. The filter has
 - Filter name: `myc_getter_get_acf_attr`
 
 ### text
-- Returns escaped content using `wp_kses_post()` function or `false` if it is empty.
+- Returns escaped content using `wp_kses_post()` function or `false` if it is empty
 - Format: string
 - Filter name: `myc_getter_get_acf_text`
 
