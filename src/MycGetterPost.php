@@ -74,7 +74,7 @@ class MycGetterPost extends MycGetterBase
     {
         $data = [
             'date'      => esc_attr(get_the_date('', $this->postID)),
-            'global'    => esc_attr(get_post_time('c', true)),
+            'global'    => esc_attr(get_post_time('c', true, $this->postID)),
         ];
 
         return apply_filters('myc_getter_get_date', $data, $this->postType, $this->postID);
