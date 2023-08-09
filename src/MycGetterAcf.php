@@ -50,19 +50,44 @@ class MycGetterAcf extends MycGetterBase
 
     protected function escapeACFValues($field, $type)
     {
-        $value = match ($type) {
-            'date'      => $this->getACFDate($field),
-            'time'      => $this->getACFTime($field),
-            'link'      => $this->getACFLink($field),
-            'image'     => $this->getACFImage($field),
-            'image_url' => $this->getACFImage($field, true),
-            'int'       => $this->getACFInt($field),
-            'string'    => $this->getACFString($field),
-            'attr'      => $this->getACFAttribute($field),
-            'text'      => $this->getACFText($field),
-            'email'     => $this->getACFEmail($field),
-            'raw'       => $this->getACFRaw($field)
-        };
+        switch ($type) {
+            case 'date':
+                $value = $this->getACFDate($field);
+                break;
+            case 'time':
+                $value = $this->getACFTime($field);
+                break;
+            case 'link':
+                $value = $this->getACFLink($field);
+                break;
+            case 'image':
+                $value = $this->getACFImage($field);
+                break;
+            case 'image_url':
+                $value = $this->getACFImage($field, true);
+                break;
+            case 'int':
+                $value = $this->getACFInt($field);
+                break;
+            case 'string':
+                $value = $this->getACFString($field);
+                break;
+            case 'attr':
+                $value = $this->getACFAttribute($field);
+                break;
+            case 'text':
+                $value = $this->getACFText($field);
+                break;
+            case 'email':
+                $value = $this->getACFEmail($field);
+                break;
+            case 'raw':
+                $value = $this->getACFRaw($field);
+                break;
+            default:
+                $value = false;
+                break;
+        }
 
         return $value;
     }
