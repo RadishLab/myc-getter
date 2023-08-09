@@ -23,16 +23,29 @@ class MycGetterPost extends MycGetterBase
     {
         $data = [];
         foreach ($this->args['fields'] ?? [] as $field) {
-            $data[$field] = match ($field) {
-                'id'        => $this->getId(),
-                'slug'      => $this->getSlug(),
-                'title'     => $this->getTitle(),
-                'url'       => $this->getURL(),
-                'image'     => $this->getImage(),
-                'text'      => $this->getText(),
-                'excerpt'   => $this->getExcerpt(),
-                'date'      => $this->getPostDate(),
-            };
+            switch ($field) {
+                case 'title':
+                    $data[$field] = $this->getTitle();
+                    break;
+                case 'url':
+                    $data[$field] = $this->getURL();
+                    break;
+                case 'image':
+                    $data[$field] = $this->getImage();
+                    break;
+                case 'text':
+                    $data[$field] = $this->getText();
+                    break;
+                case 'excerpt':
+                    $data[$field] = $this->getExcerpt();
+                    break;
+                case 'date':
+                    $data[$field] = $this->getPostDate();
+                    break;
+                default:
+                    $data[$field] = false;
+                    break;
+            }
         }
 
         return $data;
