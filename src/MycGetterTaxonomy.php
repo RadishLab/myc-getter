@@ -28,13 +28,26 @@ class MycGetterTaxonomy extends MycGetterBase
                 continue;
             }
 
-            $data[$taxonomy] = match ($return) {
-                'all'           => $this->getTermsObject($terms),
-                'name'          => $this->getTermsName($terms),
-                'link'          => $this->getTermsLink($terms),
-                'slug/name'     => $this->getTermsSlugName($terms),
-                'id/name'       => $this->getTermsIDName($terms),
-            };
+            switch ($return) {
+                case 'all':
+                    $data[$taxonomy] = $this->getTermsObject($terms);
+                    break;
+                case 'name':
+                    $data[$taxonomy] = $this->getTermsName($terms);
+                    break;
+                case 'link':
+                    $data[$taxonomy] = $this->getTermsLink($terms);
+                    break;
+                case 'slug/name':
+                    $data[$taxonomy] = $this->getTermsSlugName($terms);
+                    break;
+                case 'id/name':
+                    $data[$taxonomy] = $this->getTermsIDName($terms);
+                    break;
+                default:
+                    $data[$taxonomy] = false;
+                    break;
+            }
         }
 
         return $data;
