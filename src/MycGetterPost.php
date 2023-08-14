@@ -24,6 +24,9 @@ class MycGetterPost extends MycGetterBase
         $data = [];
         foreach ($this->args['fields'] ?? [] as $field) {
             switch ($field) {
+                case 'id':
+                    $data[$field] = $this->getId();
+                    break;
                 case 'title':
                     $data[$field] = $this->getTitle();
                     break;
