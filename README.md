@@ -116,6 +116,11 @@ Each field provides a filter to modify the returned content. The filter has thre
 - Format: int
 - Filter name: `myc_getter_get_id`
 
+### slug
+- Returns escaped content of `post->post_name`
+- Format: string
+- Filter name: `myc_getter_get_slug`
+
 ### title
 - Returns escaped content of `post->post_title`
 - Format: string
