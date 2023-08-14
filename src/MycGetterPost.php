@@ -27,6 +27,9 @@ class MycGetterPost extends MycGetterBase
                 case 'id':
                     $data[$field] = $this->getId();
                     break;
+                case 'slug':
+                    $data[$field] = $this->getSlug();
+                    break;
                 case 'title':
                     $data[$field] = $this->getTitle();
                     break;
