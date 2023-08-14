@@ -25,6 +25,7 @@ class MycGetterPost extends MycGetterBase
         foreach ($this->args['fields'] ?? [] as $field) {
             $data[$field] = match ($field) {
                 'id'        => $this->getId(),
+                'slug'      => $this->getSlug(),
                 'title'     => $this->getTitle(),
                 'url'       => $this->getURL(),
                 'image'     => $this->getImage(),
@@ -41,6 +42,12 @@ class MycGetterPost extends MycGetterBase
     {
         $id = absint($this->post->ID);
         return apply_filters('myc_getter_get_id', $id, $this->postType, $this->postID);
+    }
+
+    protected function getSlug()
+    {
+        $slug = esc_attr($this->post->post_name);
+        return apply_filters('myc_getter_get_slug', $slug, $this->postType, $this->postID);
     }
 
     protected function getTitle()
