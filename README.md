@@ -111,6 +111,11 @@ $getter = new MycGetter('new_preset');
 
 Each field provides a filter to modify the returned content. The filter has three parameters: `$value`, `$post_type` and `$post_id`.
 
+### id
+- Returns escaped content of `post->ID`
+- Format: int
+- Filter name: `myc_getter_get_id`
+
 ### title
 - Returns escaped content of `post->post_title`
 - Format: string
