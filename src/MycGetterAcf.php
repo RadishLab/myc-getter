@@ -80,9 +80,12 @@ class MycGetterAcf extends MycGetterBase
             return false;
         }
 
-        $date = $dateObject->format($dateFormat);
+        $data = [
+            'date'      => $dateObject->format($dateFormat),
+            'global'    => $dateObject->format('c'),
+        ];
 
-        return apply_filters('myc_getter_get_acf_date', $date, $this->postType, $this->postID, $fieldSlug);
+        return apply_filters('myc_getter_get_acf_date', $data, $this->postType, $this->postID, $fieldSlug);
     }
 
     protected function getACFTime($fieldSlug)
