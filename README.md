@@ -169,8 +169,8 @@ List of key/value where the key is the field slug and the value is the field typ
 Each field type provides a filter to modify the returned content. The filter has four parameters: `$value`, `$post_type`, `$post_id` and `$field_slug`.
 
 ### date
-- Returns date in global date format or `false` if it is empty or the date is not formatted correctly
-- Format: string
+- Returns dates in two different format: using the global date format and using ISO 8601 (`c`) date	format or `false` if it is empty or the date is not formatted correctly
+- Format: array
 - Filter name: `myc_getter_get_acf_date`
 
 ### time
