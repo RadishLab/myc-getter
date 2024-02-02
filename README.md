@@ -178,6 +178,11 @@ Each field type provides a filter to modify the returned content. The filter has
 - Format: string
 - Filter name: `myc_getter_get_acf_time`
 
+### datetime
+- Returns date and time in global date and time format or `false` if it is empty or the value is not formatted correctly
+- Format: string
+- Filter name: `myc_getter_get_acf_datetime`
+
 ### link
 - Returns escaped link info (`title`, `url`, `target`, `rel`) or `false` if it is empty
 - Format: array
