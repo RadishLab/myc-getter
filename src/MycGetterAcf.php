@@ -53,6 +53,7 @@ class MycGetterAcf extends MycGetterBase
         $value = match ($type) {
             'date'      => $this->getACFDate($field),
             'time'      => $this->getACFTime($field),
+            'datetime'  => $this->getACFDateTime($field),
             'link'      => $this->getACFLink($field),
             'image'     => $this->getACFImage($field),
             'image_url' => $this->getACFImage($field, true),
@@ -104,6 +105,25 @@ class MycGetterAcf extends MycGetterBase
         $time = $timeObject->format($timeFormat);
 
         return apply_filters('myc_getter_get_acf_time', $time, $this->postType, $this->postID, $fieldSlug);
+    }
+
+    protected function getACFDateTime($fieldSlug)
+    {
+        $value = get_field($fieldSlug, $this->postID, false);
+        if (!$value) {
+            return false;
+        }
+
+        $dateFormat = get_option('date_format');
+        $timeFormat = get_option('time_format');
+        $dateTimeObject = \DateTime::createFromFormat('Y-m-d H:i:s', $value);
+        if (!$dateTimeObject) {
+            return false;
+        }
+
+        $dateTime = $dateTimeObject->format($dateFormat.' '.$timeFormat);
+
+        return apply_filters('myc_getter_get_acf_datetime', $dateTime, $this->postType, $this->postID, $fieldSlug);
     }
 
     protected function getACFLink($fieldSlug)
