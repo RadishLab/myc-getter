@@ -205,6 +205,7 @@ Each field type provides a filter to modify the returned content. The filter has
 
 ### image
 - Returns the image markup or `false` if the image doesn't exists
+- This method also works with the Gallery field type
 - Pass the image size inside the key using a pipe (e.g. `image_field|medium`)
 - Format: string
 - Filter name: `myc_getter_get_acf_image`
