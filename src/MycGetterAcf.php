@@ -198,14 +198,22 @@ class MycGetterAcf extends MycGetterBase
         $fieldSlug = $args[0];
         $imageSize = $args[1] ?? 'thumbnail';
 
-        $imageID = get_field($fieldSlug, $this->postID, false);
-        if (!$imageID) {
+        $value = get_field($fieldSlug, $this->postID, false);
+        if (!$value) {
             return false;
         }
 
-        $image = $isUrl
-            ? esc_url(wp_get_attachment_image_url($imageID, $imageSize))
-            : wp_get_attachment_image($imageID, $imageSize);
+        if (is_array($value)) {
+            $image = array_map(function ($imageID) use($isUrl, $imageSize) {
+                return $isUrl
+                    ? esc_url(wp_get_attachment_image_url($imageID, $imageSize))
+                    : wp_get_attachment_image($imageID, $imageSize);
+            }, $value);
+        } else {
+            $image = $isUrl
+                ? esc_url(wp_get_attachment_image_url($value, $imageSize))
+                : wp_get_attachment_image($value, $imageSize);
+        }
 
         return apply_filters('myc_getter_get_acf_image', $image, $this->postType, $this->postID, $fieldSlug);
     }
