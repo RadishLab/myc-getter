@@ -183,6 +183,11 @@ Each field type provides a filter to modify the returned content. The filter has
 - Format: string
 - Filter name: `myc_getter_get_acf_datetime`
 
+### url
+- Returns escaped url using `esc_url()` function
+- Format: string
+- Filter name: `myc_getter_get_acf_url`
+
 ### link
 - Returns escaped link info (`title`, `url`, `target`, `rel`) or `false` if it is empty
 - Format: array
