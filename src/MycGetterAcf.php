@@ -54,6 +54,7 @@ class MycGetterAcf extends MycGetterBase
             'date'      => $this->getACFDate($field),
             'time'      => $this->getACFTime($field),
             'datetime'  => $this->getACFDateTime($field),
+            'url'       => $this->getACFUrl($field),
             'link'      => $this->getACFLink($field),
             'image'     => $this->getACFImage($field),
             'image_url' => $this->getACFImage($field, true),
@@ -124,6 +125,13 @@ class MycGetterAcf extends MycGetterBase
         $dateTime = $dateTimeObject->format($dateFormat.' '.$timeFormat);
 
         return apply_filters('myc_getter_get_acf_datetime', $dateTime, $this->postType, $this->postID, $fieldSlug);
+    }
+
+    protected function getACFUrl($fieldSlug)
+    {
+        $value = esc_url(get_field($fieldSlug, $this->postID));
+
+        return apply_filters('myc_getter_get_acf_url', $value, $this->postType, $this->postID, $fieldSlug);
     }
 
     protected function getACFLink($fieldSlug)
