@@ -57,11 +57,14 @@ class MyClass {
   }
 }
 ```
-The class accept two options:
-- An array of arguments, listing the content you want to pull
-- A preset name
+The class accept two parameters:
 
-If nothing is passed, the class will use the arguments of the preset `default`.
+1. `$args`
+    - An array of arguments, listing the content you want to pull, or a preset name
+    - If nothing is passed, the class will use the arguments of the preset `default`
+2. `$context`
+    - A string to identify where the class is being called
+    - If nothing is passed, the class will use `default`
 ```php
 [
   'fields'        => ['title', 'url', 'image'],
@@ -88,17 +91,17 @@ $getter = new MycGetter($args);
   'taxonomies'    => false,
 ];
 ```
-If you're using the same arguments in multiples places, you can use the filter `myc_getter_presets` to create a new preset:
+If you're using the same arguments in multiples places, you can use the filter `myc_getter_presets` to create a new preset. Presets can also vary depend on `$context`:
 
 ```php
-add_filter('myc_getter_presets', function ($presets) {
+add_filter('myc_getter_presets', function ($presets, $context) {
   $presets['new_preset'] = [
     'fields'    => ['title'],
     'image_size' => 'medium',
   ];
 
   return $presets;
-});
+}, 10, 2);
 ```
 
 Then, you can use this new preset when instantiate the class:
