@@ -1,7 +1,7 @@
 {
   "name": "radishlab/myc-getter",
   "description": "A library to get and escape values in WordPress + ACF environments",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "license": "GPL-2.0-or-later",
   "autoload": {
     "psr-4": {
