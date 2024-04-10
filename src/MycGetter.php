@@ -6,6 +6,7 @@ class MycGetter
 {
     protected $post;
     protected $args;
+    protected $context;
     protected $presets;
     protected $defaultPreset = [
         'fields'        => ['title', 'url', 'image'],
@@ -20,8 +21,9 @@ class MycGetter
      *
      * @param string|array $args The name of a preset or an array of settings
      */
-    public function __construct($args = 'default')
+    public function __construct($args = 'default', $context = 'default')
     {
+        $this->context = $context;
         $this->loadPresets();
         $this->parseArgs($args);
     }
@@ -34,7 +36,7 @@ class MycGetter
         $defaultPreset = $this->defaultPreset;
         $presets['default'] = $defaultPreset;
 
-        $presets = apply_filters('myc_getter_presets', $presets);
+        $presets = apply_filters('myc_getter_presets', $presets, $this->context);
 
         $this->presets = array_map(function ($preset) use ($defaultPreset) {
             return array_merge($defaultPreset, $preset);
