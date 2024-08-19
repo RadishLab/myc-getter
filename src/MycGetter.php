@@ -90,7 +90,7 @@ class MycGetter
         $data = [];
         $this->extractPost($post);
 
-        $fieldsData = new MycGetterPost($this->post, $this->args);
+        $fieldsData = new MycGetterPost($this->post, $this->args, $this->context);
         $data = $fieldsData->escapePostFields();
 
         $taxonomyData = new MycGetterTaxonomy($this->post, $this->args);
