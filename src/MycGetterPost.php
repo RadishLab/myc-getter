@@ -11,10 +11,11 @@ class MycGetterPost extends MycGetterBase
      * @param array $args The settings to use
      * @return array
      */
-    public function __construct($post, $args)
+    public function __construct($post, $args, $context)
     {
         $this->args = $args;
         $this->post = $post;
+        $this->context = $context;
         $this->postID = $post->ID;
         $this->postType = $post->post_type;
     }
