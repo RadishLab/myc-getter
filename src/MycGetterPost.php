@@ -69,7 +69,7 @@ class MycGetterPost extends MycGetterBase
             ? get_the_post_thumbnail($this->postID, $this->args['image_size'])
             : esc_url(get_the_post_thumbnail_url($this->postID, $this->args['image_size']));
 
-        return apply_filters('myc_getter_get_image', $image, $this->postType, $this->postID);
+        return apply_filters('myc_getter_get_image', $image, $this->postType, $this->postID, $this->context);
     }
 
     protected function getText()
