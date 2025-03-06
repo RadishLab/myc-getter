@@ -60,7 +60,7 @@ class MycGetterPost extends MycGetterBase
     protected function getURL()
     {
         $url = esc_url(get_permalink($this->postID));
-        return apply_filters('myc_getter_get_url', $url, $this->postType, $this->postID);
+        return apply_filters('myc_getter_get_url', $url, $this->postType, $this->postID, $this->context);
     }
 
     protected function getImage()
