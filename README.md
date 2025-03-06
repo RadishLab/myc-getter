@@ -112,7 +112,7 @@ $getter = new MycGetter('new_preset');
 ## fields
 - Format: array
 
-Each field provides a filter to modify the returned content. The filter has three parameters: `$value`, `$post_type` and `$post_id`. Image filter has an additional parameter: `$context`.
+Each field provides a filter to modify the returned content. The filter has three parameters: `$value`, `$post_type` and `$post_id`. Image and URL filters have an additional parameter: `$context`.
 
 ### id
 - Returns escaped content of `post->ID`
