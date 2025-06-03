@@ -29,32 +29,32 @@ class MycGetterTaxonomy extends MycGetterBase
             }
 
             $data[$taxonomy] = match ($return) {
-                'all'           => $this->getTermsObject($terms),
-                'name'          => $this->getTermsName($terms),
-                'link'          => $this->getTermsLink($terms),
-                'slug/name'     => $this->getTermsSlugName($terms),
-                'id/name'       => $this->getTermsIDName($terms),
+                'all'           => $this->getTermsObject($terms, $taxonomy),
+                'name'          => $this->getTermsName($terms, $taxonomy),
+                'link'          => $this->getTermsLink($terms, $taxonomy),
+                'slug/name'     => $this->getTermsSlugName($terms, $taxonomy),
+                'id/name'       => $this->getTermsIDName($terms, $taxonomy),
             };
         }
 
         return $data;
     }
 
-    protected function getTermsObject($terms)
+    protected function getTermsObject($terms, $taxonomy)
     {
-        return apply_filters('myc_getter_get_terms_object', $terms, $this->postType, $this->postID);
+        return apply_filters('myc_getter_get_terms_object', $terms, $this->postType, $this->postID, $taxonomy);
     }
 
-    protected function getTermsName($terms)
+    protected function getTermsName($terms, $taxonomy)
     {
         $escapedTerms = array_map(function ($term) {
             return esc_html($term->name);
         }, $terms);
 
-        return apply_filters('myc_getter_get_terms_name', $escapedTerms, $this->postType, $this->postID);
+        return apply_filters('myc_getter_get_terms_name', $escapedTerms, $this->postType, $this->postID, $taxonomy);
     }
 
-    protected function getTermsLink($terms)
+    protected function getTermsLink($terms, $taxonomy)
     {
         $escapedTerms = array_map(function ($term) {
             return [
@@ -63,10 +63,10 @@ class MycGetterTaxonomy extends MycGetterBase
             ];
         }, $terms);
 
-        return apply_filters('myc_getter_get_terms_link', $escapedTerms, $this->postType, $this->postID);
+        return apply_filters('myc_getter_get_terms_link', $escapedTerms, $this->postType, $this->postID, $taxonomy);
     }
 
-    protected function getTermsSlugName($terms)
+    protected function getTermsSlugName($terms, $taxonomy)
     {
         $escapedTerms = array_map(function ($term) {
             return [
@@ -75,10 +75,10 @@ class MycGetterTaxonomy extends MycGetterBase
             ];
         }, $terms);
 
-        return apply_filters('myc_getter_get_terms_slug_name', $escapedTerms, $this->postType, $this->postID);
+        return apply_filters('myc_getter_get_terms_slug_name', $escapedTerms, $this->postType, $this->postID, $taxonomy);
     }
 
-    protected function getTermsIDName($terms)
+    protected function getTermsIDName($terms, $taxonomy)
     {
         $escapedTerms = array_map(function ($term) {
             return [
@@ -87,6 +87,6 @@ class MycGetterTaxonomy extends MycGetterBase
             ];
         }, $terms);
 
-        return apply_filters('myc_getter_get_terms_id_name', $escapedTerms, $this->postType, $this->postID);
+        return apply_filters('myc_getter_get_terms_id_name', $escapedTerms, $this->postType, $this->postID, $taxonomy);
     }
 }
