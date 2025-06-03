@@ -252,7 +252,7 @@ Each field type provides a filter to modify the returned content. The filter has
 
 List of key/value where the key is the taxonomy slug and the value is the desired returned format.
 
-Each format provides a filter to modify the returned content. The filter has three parameters: `$terms`, `$post_type` and `$post_id`.
+Each format provides a filter to modify the returned content. The filter has thfourree parameters: `$terms`, `$post_type`, `$post_id` and `$taxonomy`.
 
 ### all
 - Returns the term object without any treatment
