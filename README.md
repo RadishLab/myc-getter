@@ -154,6 +154,11 @@ Each field provides a filter to modify the returned content. The filter has thre
 - Format: array
 - Filter name: `myc_getter_get_date`
 
+### post_type
+- Returns the post type slug
+- Format: string
+- Filter name: `myc_getter_get_post_type` (to avoid redundancy, this filter has only two parameters)
+
 ## image_size
 - Format: string
 
