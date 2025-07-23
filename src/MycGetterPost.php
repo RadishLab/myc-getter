@@ -33,6 +33,7 @@ class MycGetterPost extends MycGetterBase
                 'text'      => $this->getText(),
                 'excerpt'   => $this->getExcerpt(),
                 'date'      => $this->getPostDate(),
+                'post_type' => $this->getPostType(),
             };
         }
 
@@ -93,5 +94,10 @@ class MycGetterPost extends MycGetterBase
         ];
 
         return apply_filters('myc_getter_get_date', $data, $this->postType, $this->postID);
+    }
+
+    protected function getPostType()
+    {
+        return apply_filters('myc_getter_get_post_type', $this->postType, $this->postID);
     }
 }
