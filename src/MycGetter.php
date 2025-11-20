@@ -80,6 +80,18 @@ class MycGetter
     }
 
     /**
+     * Set the image size to use for generating image markup
+     *
+     * @param string $size WordPress image size (e.g., 'thumbnail', 'medium', 'large', 'full')
+     * @return self
+     */
+    public function setImageSize($size)
+    {
+        $this->args['image_size'] = $size;
+        return $this;
+    }
+
+    /**
      * Escape the content of a post
      *
      * @param int|object $post The post ID or WP_Post object

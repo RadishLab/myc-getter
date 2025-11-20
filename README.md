@@ -109,6 +109,21 @@ Then, you can use this new preset when instantiate the class:
 $getter = new MycGetter('new_preset');
 ```
 
+## Modifying Settings After Instantiation
+
+If you need to change the image size after creating the getter instance but before generating the image markup, you can use the `setImageSize()` method:
+
+```php
+$getter = new MycGetter('my_preset');
+$getter->setImageSize('thumbnail'); // Change from preset's image_size to 'thumbnail'
+```
+
+This method supports method chaining:
+```php
+$getter = new MycGetter('my_preset');
+$data = $getter->setImageSize('full')->escapedContent($post);
+```
+
 ## fields
 - Format: array
 
